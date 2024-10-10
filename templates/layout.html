@@ -1,0 +1,46 @@
+{{define "layout"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{template "title" .}}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/promo">Promo</a></li>
+            <li><a href="/change">Compteur</a></li>
+            <li><a href="/user/form">Formulaire Utilisateur</a></li>
+        </ul>
+    </nav>
+    {{template "content" .}}
+</body>
+</html>
+{{end}}
+
+// Dans chaque fichier de template spécifique (par exemple, promo.html)
+{{define "title"}}Titre de la page{{end}}
+{{define "content"}}
+    <!-- Contenu spécifique de la page -->
+{{end}}
+
+// Dans votre code Go (par exemple, dans handlers/promo.go)
+func PromoHandler(w http.ResponseWriter, r *http.Request) {
+    tmpl, err := template.ParseFiles(
+        "templates/layout.html",
+        "templates/promo.html",
+    )
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+
+    data := // ... vos données ...
+
+    err = tmpl.ExecuteTemplate(w, "layout", data)
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+    }
+}

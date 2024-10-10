@@ -1,0 +1,14 @@
+{{define "title"}}Informations Utilisateur{{end}}
+
+{{define "content"}}
+<h1>Informations Utilisateur</h1>
+{{if .Nom}}
+    <p>Nom : {{.Nom}}</p>
+    <p>Prénom : {{.Prenom}}</p>
+    <p>Date de naissance : {{.DateNais}}</p>
+    <p>Sexe : {{.Sexe}}</p>
+{{else}}
+    <p>Veuillez renseigner vos informations personnelles.</p>
+    <a href="/user/form">Remplir le formulaire</a>
+{{end}}
+{{end}}

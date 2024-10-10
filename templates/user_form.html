@@ -1,0 +1,28 @@
+{{define "title"}}Formulaire Utilisateur{{end}}
+
+{{define "content"}}
+<h1>Formulaire Utilisateur</h1>
+<form action="/user/treatment" method="post">
+    <div>
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required pattern="[a-zA-Z]{1,32}">
+    </div>
+    <div>
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" required pattern="[a-zA-Z]{1,32}">
+    </div>
+    <div>
+        <label for="date_nais">Date de naissance :</label>
+        <input type="date" id="date_nais" name="date_nais" required>
+    </div>
+    <div>
+        <label for="sexe">Sexe :</label>
+        <select id="sexe" name="sexe" required>
+            <option value="masculin">Masculin</option>
+            <option value="féminin">Féminin</option>
+            <option value="autre">Autre</option>
+        </select>
+    </div>
+    <button type="submit">Envoyer</button>
+</form>
+{{end}}

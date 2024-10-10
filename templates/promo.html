@@ -1,0 +1,34 @@
+{{define "title"}}Informations de la Classe{{end}}
+
+{{define "content"}}
+<h1>{{.Nom}}</h1>
+<p>Filière : {{.Filiere}}</p>
+<p>Niveau : {{.Niveau}}</p>
+<p>Nombre d'étudiants : {{.NbEtudiants}}</p>
+
+<h2>Liste des étudiants</h2>
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Âge</th>
+        <th>Sexe</th>
+    </tr>
+    {{range .Etudiants}}
+    <tr>
+        <td>{{.Nom}}</td>
+        <td>{{.Prenom}}</td>
+        <td>{{.Age}}</td>
+        <td>
+            {{if eq .Sexe "masculin"}}
+                <img src="/static/img/male.png" alt="Masculin" width="20">
+            {{else if eq .Sexe "féminin"}}
+                <img src="/static/img/female.png" alt="Féminin" width="20">
+            {{else}}
+                {{.Sexe}}
+            {{end}}
+        </td>
+    </tr>
+    {{end}}
+</table>
+{{end}}

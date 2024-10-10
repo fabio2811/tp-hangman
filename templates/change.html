@@ -1,0 +1,12 @@
+{{define "title"}}Compteur de vues{{end}}
+
+{{define "content"}}
+<div class="{{if .IsPair}}pair{{else}}impair{{end}}">
+    <h1>Compteur de vues</h1>
+    {{if .IsPair}}
+        <p>Le nombre de vues est pair : {{.Count}}</p>
+    {{else}}
+        <p>Le nombre de vues est impair : {{.Count}}</p>
+    {{end}}
+</div>
+{{end}}
